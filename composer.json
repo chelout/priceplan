@@ -1,5 +1,20 @@
 {
+    "name": "chelout/price-plan-api",
+    "description": "PricePlan api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Viacheslav Ostrovskiy",
+            "email": "chelout@gmail.com"
+        }
+    ],
     "require": {
+        "php": "^7.0",
         "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "PricePlan\\": "src/PricePlan"
+        }
     }
 }
