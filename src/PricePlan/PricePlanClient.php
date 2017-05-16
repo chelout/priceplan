@@ -24,19 +24,19 @@ class PricePlanClient
      */
     private $guzzle;
     /**
-     * Create a new Forge instance.
+     * Create a new instance.
      *
      * @param  string $apiKey
      * @param  \GuzzleHttp\Client $guzzle
      * @return void
      */
-    public function __construct($domain)
+    public function __construct($domain, HttpClient $guzzle = null)
     {
         $this->domain = $domain;
         // $this->login = $login;
         // $this->password = $password;
 
-        $this->guzzle = new HttpClient([
+        $this->guzzle = $guzzle ?: new HttpClient([
             'base_uri' => 'https://'.$this->domain.'.priceplan.pro/api/',
             'cookies' => true,
             // 'http_errors' => false,
@@ -71,7 +71,7 @@ class PricePlanClient
     }
 
     /**
-     * Make a GET request to Forge servers and return the response.
+     * Make a GET request and return the response.
      *
      * @param  string $uri
      * @return mixed
@@ -82,7 +82,7 @@ class PricePlanClient
     }
 
     /**
-     * Make a POST request to Forge servers and return the response.
+     * Make a POST request and return the response.
      *
      * @param  string $uri
      * @param  array $payload
@@ -94,7 +94,7 @@ class PricePlanClient
     }
 
     /**
-     * Make a PUT request to Forge servers and return the response.
+     * Make a PUT request and return the response.
      *
      * @param  string $uri
      * @param  array $payload
@@ -106,7 +106,7 @@ class PricePlanClient
     }
 
     /**
-     * Make a DELETE request to Forge servers and return the response.
+     * Make a DELETE request and return the response.
      *
      * @param  string $uri
      * @param  array $payload
@@ -123,14 +123,14 @@ class PricePlanClient
     }
 
     /**
-     * Make request to Forge servers and return the response.
+     * Make request and return the response.
      *
      * @param  string $verb
      * @param  string $uri
      * @param  array $payload
      * @return mixed
      */
-    private function request($verb, $uri, array $headers = [], array $payload = [], array $query = [])
+    public function request($verb, $uri, array $headers = [], array $payload = [], array $query = [])
     {
         if ($this->auth) {
             $headers['auth'] = $this->auth;

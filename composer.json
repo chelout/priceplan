@@ -16,5 +16,9 @@
         "psr-4": {
             "PricePlan\\": "src/PricePlan"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1",
+        "mockery/mockery": "^0.9.9"
     }
 }
