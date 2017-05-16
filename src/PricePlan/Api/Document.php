@@ -45,5 +45,4 @@ class Document
     {
         return $this->guzzle->download('revenues/'.$id.'/download'.($stamp ? '/stamp' : null), $path);
     }
-
 }

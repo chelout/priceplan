@@ -64,5 +64,4 @@ class Client
     {
         return $this->guzzle->post('clients/'.$id.'/auth-key');
     }
-
 }

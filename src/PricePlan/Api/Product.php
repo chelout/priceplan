@@ -30,5 +30,4 @@ class Product
     {
         return $this->guzzle->get('productstatuses/');
     }
-
 }

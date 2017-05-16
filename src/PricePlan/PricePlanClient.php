@@ -27,7 +27,7 @@ class PricePlanClient
      *
      * @param string             $apiKey
      * @param \GuzzleHttp\Client $guzzle
-     * 
+     *
      * @return void
      */
     public function __construct($domain, HttpClient $guzzle = null)
@@ -66,7 +66,7 @@ class PricePlanClient
      * Make a GET request and return the response.
      *
      * @param string $uri
-     * 
+     *
      * @return mixed
      */
     public function get($uri, $query = [])
@@ -79,7 +79,7 @@ class PricePlanClient
      *
      * @param string $uri
      * @param array  $payload
-     * 
+     *
      * @return mixed
      */
     public function post($uri, array $payload = [])
@@ -92,7 +92,7 @@ class PricePlanClient
      *
      * @param string $uri
      * @param array  $payload
-     * 
+     *
      * @return mixed
      */
     public function put($uri, array $payload = [])
@@ -105,7 +105,7 @@ class PricePlanClient
      *
      * @param string $uri
      * @param array  $payload
-     * 
+     *
      * @return mixed
      */
     public function delete($uri, array $payload = [])
@@ -124,7 +124,7 @@ class PricePlanClient
      * @param string $verb
      * @param string $uri
      * @param array  $payload
-     * 
+     *
      * @return mixed
      */
     public function request($verb, $uri, array $headers = [], array $payload = [], array $query = [])
@@ -150,8 +150,10 @@ class PricePlanClient
             if ($responseBodyDecoded->success) {
                 return $responseBodyDecoded->data ?? false;
             }
+
             return $this->handleRequestError($response);
         }
+        
         return $responseBodyDecoded;
     }
 
@@ -181,7 +183,7 @@ class PricePlanClient
 
     /**
      * @param  \Psr\Http\Message\ResponseInterface $response
-     * 
+     *
      * @return void
      */
     private function handleRequestError(ResponseInterface $response)
@@ -210,7 +212,7 @@ class PricePlanClient
      * @param array  $collection
      * @param string $class
      * @param array  $extraData
-     * 
+     *
      * @return array
      */
     protected function transformCollection($collection, $class, $extraData = [])

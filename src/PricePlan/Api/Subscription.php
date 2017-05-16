@@ -30,5 +30,4 @@ class Subscription
     {
         return $this->guzzle->post('subscribes/'.$id, $payload);
     }
-
 }
