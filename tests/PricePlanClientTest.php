@@ -1,10 +1,8 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-
+use PHPUnit\Framework\TestCase;
 use PricePlan\PricePlanClient;
-use PricePlan\Exceptions\PricePlanException;
 
 class PricePlanClientTest extends TestCase
 {
@@ -28,9 +26,9 @@ class PricePlanClientTest extends TestCase
             ->once()
             ->with('GET', 'login', [
                 'query' => [
-                    'user' => 'user',
+                    'user'     => 'user',
                     'password' => 'password',
-                ]
+                ],
             ])->andReturn(
                 $response = Mockery::mock('GuzzleHttp\Psr7\Response')
             );
@@ -40,7 +38,7 @@ class PricePlanClientTest extends TestCase
 
         $pricePlan = new PricePlanClient('test', $this->guzzle);
         $pricePlan->get('login', [
-            'user' => 'user',
+            'user'     => 'user',
             'password' => 'password',
         ]);
     }
@@ -51,9 +49,9 @@ class PricePlanClientTest extends TestCase
             ->once()
             ->with('POST', 'login', [
                 'json' => [
-                    'user' => 'user',
+                    'user'     => 'user',
                     'password' => 'password',
-                ]
+                ],
             ])->andReturn(
                 $response = Mockery::mock('GuzzleHttp\Psr7\Response')
             );
@@ -63,7 +61,7 @@ class PricePlanClientTest extends TestCase
 
         $pricePlan = new PricePlanClient('test', $this->guzzle);
         $pricePlan->post('login', [
-            'user' => 'user',
+            'user'     => 'user',
             'password' => 'password',
         ]);
     }
@@ -74,9 +72,9 @@ class PricePlanClientTest extends TestCase
             ->once()
             ->with('PUT', 'login', [
                 'json' => [
-                    'user' => 'user',
+                    'user'     => 'user',
                     'password' => 'password',
-                ]
+                ],
             ])->andReturn(
                 $response = Mockery::mock('GuzzleHttp\Psr7\Response')
             );
@@ -86,7 +84,7 @@ class PricePlanClientTest extends TestCase
 
         $pricePlan = new PricePlanClient('test', $this->guzzle);
         $pricePlan->put('login', [
-            'user' => 'user',
+            'user'     => 'user',
             'password' => 'password',
         ]);
     }
@@ -97,9 +95,9 @@ class PricePlanClientTest extends TestCase
             ->once()
             ->with('DELETE', 'login', [
                 'json' => [
-                    'user' => 'user',
+                    'user'     => 'user',
                     'password' => 'password',
-                ]
+                ],
             ])->andReturn(
                 $response = Mockery::mock('GuzzleHttp\Psr7\Response')
             );
@@ -109,7 +107,7 @@ class PricePlanClientTest extends TestCase
 
         $pricePlan = new PricePlanClient('test', $this->guzzle);
         $pricePlan->delete('login', [
-            'user' => 'user',
+            'user'     => 'user',
             'password' => 'password',
         ]);
     }
@@ -156,9 +154,9 @@ class PricePlanClientTest extends TestCase
             ->once()
             ->with('POST', 'login', [
                 'json' => [
-                    'user' => 'user',
+                    'user'     => 'user',
                     'password' => 'password',
-                ]
+                ],
             ])->andReturn(
                 $response = Mockery::mock('GuzzleHttp\Psr7\Response')
             );
@@ -169,5 +167,4 @@ class PricePlanClientTest extends TestCase
         $pricePlan = new PricePlanClient('test', $this->guzzle);
         $pricePlan->withSessionAuthentication('user', 'password');
     }
-
 }

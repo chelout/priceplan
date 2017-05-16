@@ -1,14 +1,11 @@
 <?php
 
-
-// Запрос новой ссылки на авторизацию клиента в личном кабинете
-// Запрос ссылки на авторизацию клиента в личном кабинете
-
-
-
-
 namespace PricePlan\Api;
 
+/**
+ * @todo Запрос новой ссылки на авторизацию клиента в личном кабинете
+ * @todo Запрос ссылки на авторизацию клиента в личном кабинете
+ */
 class Client
 {
     private $guzzle;
@@ -16,7 +13,6 @@ class Client
     public function __construct($guzzle)
     {
         $this->guzzle = $guzzle;
-
     }
 
     public function blocking($id)
@@ -68,4 +64,5 @@ class Client
     {
         return $this->guzzle->post('clients/'.$id.'/auth-key');
     }
+
 }

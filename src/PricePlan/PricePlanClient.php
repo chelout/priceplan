@@ -4,8 +4,6 @@ namespace PricePlan;
 
 use GuzzleHttp\Client as HttpClient;
 use Psr\Http\Message\ResponseInterface;
-use Exceptions\PricePlanException;
-// use Api\Product;
 
 class PricePlanClient
 {
@@ -23,35 +21,29 @@ class PricePlanClient
      * @var \GuzzleHttp\Client
      */
     private $guzzle;
+
     /**
      * Create a new instance.
      *
-     * @param  string $apiKey
-     * @param  \GuzzleHttp\Client $guzzle
+     * @param string             $apiKey
+     * @param \GuzzleHttp\Client $guzzle
+     * 
      * @return void
      */
     public function __construct($domain, HttpClient $guzzle = null)
     {
         $this->domain = $domain;
-        // $this->login = $login;
-        // $this->password = $password;
 
         $this->guzzle = $guzzle ?: new HttpClient([
             'base_uri' => 'https://'.$this->domain.'.priceplan.pro/api/',
-            'cookies' => true,
-            // 'http_errors' => false,
-            // 'headers' => [
-            //     'Authorization' => 'Bearer '.$this->apiKey,
-            //     'Accept' => 'application/json',
-            //     'Content-Type' => 'application/json'
-            // ]
+            'cookies'  => true,
         ]);
     }
 
     public function withSessionAuthentication($user, $password)
     {
         $this->post('login', [
-            'user' => $user,
+            'user'     => $user,
             'password' => $password,
         ]);
 
@@ -73,7 +65,8 @@ class PricePlanClient
     /**
      * Make a GET request and return the response.
      *
-     * @param  string $uri
+     * @param string $uri
+     * 
      * @return mixed
      */
     public function get($uri, $query = [])
@@ -84,8 +77,9 @@ class PricePlanClient
     /**
      * Make a POST request and return the response.
      *
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
+     * 
      * @return mixed
      */
     public function post($uri, array $payload = [])
@@ -96,8 +90,9 @@ class PricePlanClient
     /**
      * Make a PUT request and return the response.
      *
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
+     * 
      * @return mixed
      */
     public function put($uri, array $payload = [])
@@ -108,8 +103,9 @@ class PricePlanClient
     /**
      * Make a DELETE request and return the response.
      *
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
+     * 
      * @return mixed
      */
     public function delete($uri, array $payload = [])
@@ -125,9 +121,10 @@ class PricePlanClient
     /**
      * Make request and return the response.
      *
-     * @param  string $verb
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $verb
+     * @param string $uri
+     * @param array  $payload
+     * 
      * @return mixed
      */
     public function request($verb, $uri, array $headers = [], array $payload = [], array $query = [])
@@ -156,8 +153,6 @@ class PricePlanClient
             return $this->handleRequestError($response);
         }
         return $responseBodyDecoded;
-
-        // return json_decode($responseBody, true) ?: $responseBody;
     }
 
     public function api($name)
@@ -179,7 +174,6 @@ class PricePlanClient
             case 'subscriptions':
                 $api = new Api\Subscription($this);
                 break;
-                
         }
 
         return $api;
@@ -187,6 +181,7 @@ class PricePlanClient
 
     /**
      * @param  \Psr\Http\Message\ResponseInterface $response
+     * 
      * @return void
      */
     private function handleRequestError(ResponseInterface $response)
@@ -212,9 +207,10 @@ class PricePlanClient
     /**
      * Transform the items of the collection to the given class.
      *
-     * @param  array $collection
-     * @param  string $class
-     * @param  array $extraData
+     * @param array  $collection
+     * @param string $class
+     * @param array  $extraData
+     * 
      * @return array
      */
     protected function transformCollection($collection, $class, $extraData = [])
@@ -223,7 +219,4 @@ class PricePlanClient
             return new $class($data + $extraData, $this);
         }, $collection);
     }
-
 }
-
-?>

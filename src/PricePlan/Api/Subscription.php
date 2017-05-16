@@ -9,7 +9,6 @@ class Subscription
     public function __construct($guzzle)
     {
         $this->guzzle = $guzzle;
-
     }
 
     public function cost($payload)
@@ -31,4 +30,5 @@ class Subscription
     {
         return $this->guzzle->post('subscribes/'.$id, $payload);
     }
+
 }

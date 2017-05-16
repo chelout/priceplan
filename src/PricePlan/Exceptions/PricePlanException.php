@@ -7,15 +7,15 @@ use Exception;
 class PricePlanException extends Exception
 {
     const ERRORS = [
-        '1' => 'дубликат значения',
-        '2' => 'пустое значенине',
-        '3' => 'invalid_argument',
-        '4' => 'missing_argument',
-        '5' => 'invalid_data = 5',
-        '6' => 'объект не найден',
-        '7' => 'bad_request',
-        '8' => 'trigger',
-        '9' => 'few_resources',
+        '1'  => 'дубликат значения',
+        '2'  => 'пустое значенине',
+        '3'  => 'invalid_argument',
+        '4'  => 'missing_argument',
+        '5'  => 'invalid_data = 5',
+        '6'  => 'объект не найден',
+        '7'  => 'bad_request',
+        '8'  => 'trigger',
+        '9'  => 'few_resources',
         '10' => 'no_funds',
         '11' => 'data',
         '12' => 'missing_variable',
@@ -46,7 +46,6 @@ class PricePlanException extends Exception
         '37' => 'var_is_used',
         '-1' => 'неизвестная ошибка',
     ];
-
 
     /**
      * Create a new exception instance.

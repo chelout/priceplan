@@ -9,7 +9,6 @@ class Product
     public function __construct($guzzle)
     {
         $this->guzzle = $guzzle;
-
     }
 
     public function create($payload)
@@ -31,4 +30,5 @@ class Product
     {
         return $this->guzzle->get('productstatuses/');
     }
+
 }

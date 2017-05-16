@@ -9,7 +9,6 @@ class Document
     public function __construct($guzzle)
     {
         $this->guzzle = $guzzle;
-
     }
 
     public function create(array $payload)
@@ -46,4 +45,5 @@ class Document
     {
         return $this->guzzle->download('revenues/'.$id.'/download'.($stamp ? '/stamp' : null), $path);
     }
+
 }
