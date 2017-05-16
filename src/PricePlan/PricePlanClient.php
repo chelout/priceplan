@@ -153,7 +153,7 @@ class PricePlanClient
 
             return $this->handleRequestError($response);
         }
-        
+
         return $responseBodyDecoded;
     }
 
@@ -182,7 +182,7 @@ class PricePlanClient
     }
 
     /**
-     * @param  \Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      *
      * @return void
      */
