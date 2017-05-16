@@ -6,6 +6,9 @@ class Product
 {
     private $guzzle;
 
+    /**
+     * @param \PricePlan\PricePlanClient $guzzle
+     */
     public function __construct($guzzle)
     {
         $this->guzzle = $guzzle;

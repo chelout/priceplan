@@ -50,6 +50,7 @@ class PricePlanException extends Exception
     /**
      * Create a new exception instance.
      *
+     * @param string $json
      * @return void
      */
     public function __construct($json)

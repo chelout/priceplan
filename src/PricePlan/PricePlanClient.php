@@ -25,7 +25,6 @@ class PricePlanClient
     /**
      * Create a new instance.
      *
-     * @param string             $apiKey
      * @param \GuzzleHttp\Client $guzzle
      *
      * @return void
@@ -217,7 +216,7 @@ class PricePlanClient
      */
     protected function transformCollection($collection, $class, $extraData = [])
     {
-        return array_map(function ($data) use ($class, $extraData) {
+        return array_map(function($data) use ($class, $extraData) {
             return new $class($data + $extraData, $this);
         }, $collection);
     }
