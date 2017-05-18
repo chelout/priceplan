@@ -47,7 +47,12 @@ class Client
 
     public function getAuthKey($id)
     {
-        return $this->guzzle->get('clients/'.$id.'/auth-key/');
+        $auth = $this->guzzle->get('clients/'.$id.'/auth-key/');
+        if (is_null($auth->key)) {
+            return $this->updateAuthKey($id);
+        }
+
+        return $auth;
     }
 
     public function increase($id, $payload)
